@@ -1,0 +1,46 @@
+---
+permalink: /404.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Unknown page</title>
+<link rel="stylesheet" type="text/css" href="projectslayout.css">
+
+<style>
+div#container {
+text-align: center;
+}
+h1 {
+font-size: 250%;
+}
+p, a {
+font-size: 150%;
+}
+h1, p, a {
+line-height: 25%;
+}
+</style>
+</head>
+<body onLoad="CheckLang();">
+<div id="container">
+<h1>Yo this page doesn't exist.</h1>
+<p>You can exit, if you want.</p>
+<p>Or you can stay here.</p>
+<a href="index.html">Click here if you want to go back</a>
+</div>
+
+<script>
+function CheckLang()
+{
+  // Credits to someone from stackoverflow. T.Hanks!!! >> https://stackoverflow.com/questions/8199760/how-to-get-the-browser-language-using-javascript
+  // So nice, someone looking at theez codez :)
+  var userLang = navigator.language || navigator.userLanguage; 
+  if (userLang == "nl")
+  {
+    window.location.replace("404nl.html");
+  }
+}
+</script>
+</body>
+</html>

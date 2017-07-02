@@ -1,0 +1,46 @@
+---
+permalink: /404.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Onbekende pagina</title>
+<link rel="stylesheet" type="text/css" href="projectslayout.css">
+
+<style>
+div#container {
+text-align: center;
+}
+h1 {
+font-size: 250%;
+}
+p, a {
+font-size: 150%;
+}
+h1, p, a {
+line-height: 25%;
+}
+</style>
+</head>
+<body onLoad="CheckLang();">
+<div id="container">
+<h1>Yo deze pagina bestaat niet.</h1>
+<p>Je kan weg gaan, als je wil.</p>
+<p>Of je kan hier blijven.</p>
+<a href="index.html">Klik hier als je terug wilt gaan</a>
+</div>
+
+<script>
+function CheckLang()
+{
+  // Credits naar iemand van stackoverflow. T.Hanks!!! >> https://stackoverflow.com/questions/8199760/how-to-get-the-browser-language-using-javascript
+  // Zo nice, iemand die naar deze code's kijkt :)
+  var userLang = navigator.language || navigator.userLanguage; 
+  if (userLang != "nl")
+  {
+    window.location.replace("404.html");
+  }
+}
+</script>
+</body>
+</html>
