@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Warning!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+   margin: 0;
+}
+
+body * {
+   text-align: center;
+}
+
+div#content-wrapper {
+   position: absolute;
+   width: 100%;
+   min-height: 100%;
+   background-color: rgb(255, 255, 200);
+   font-size: 40px;
+}
+a {
+   cursor: pointer;
+   width: 80%;
+   padding-left: 5px;
+   padding-right: 5px;
+   background-color: rgb(100, 255, 100);
+}
+
+@media only screen and (max-width: 700px) {
+   div#content-wrapper {
+      font-size: 20px;
+   }
+}
+</style>
+<script>
+function RedirectNow() {
+   window.location.href = window.location.href.split("?")[1];
+}
+function Page() {
+   if (window.location.href.split("?")[1] != null & window.location.href.split("?")[1] != "")
+   {
+      document.getElementById("page").textContent = window.location.href.split("?")[1];
+   }
+}
+</script>
+</head>
+<body onload="Page()">
+<div id="content-wrapper"><p>Warning! You are going to an external website!<br>(<span id="page">unknown</span>)</p><a onclick="RedirectNow()">Continue</a></div>
+</body>
+</html>

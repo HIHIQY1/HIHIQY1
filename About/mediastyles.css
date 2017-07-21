@@ -1,0 +1,23 @@
+@media only screen and (orientation: portrait) {
+    div.title img {
+        width: 130%;
+        max-width: none;
+    }
+    
+    div.content1 p {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (max-height: 700px) {
+    div.content1 {
+        height: 115%;
+    }
+    div.content1 p {
+        font-size: 20px;
+    }
+    
+    div.footer {
+        top: 215%;
+    }
+}
