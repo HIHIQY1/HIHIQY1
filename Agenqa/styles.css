@@ -1,6 +1,11 @@
 body {
     margin: 0;
     //text-shadow: 0 0 1px black;
+    font-family: Arial;
+}
+
+body * {
+    transition-duration: .5s;
 }
 
 h1 {
@@ -61,4 +66,9 @@ div#footer {
 
 a:link {
     color: rgb(50, 50, 50);
+}
+
+a:hover {
+    padding: 0 2vw;
+    background-color: rgb(200, 200, 200);
 }
