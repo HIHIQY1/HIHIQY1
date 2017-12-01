@@ -1,6 +1,9 @@
-﻿document.getElementById("btn-exit").addEventListener("click", hideAll);
-document.getElementById("btn-menu").addEventListener("click", afterToMain);
-document.getElementById("btn-howto").addEventListener("click", howTo);
+﻿// /\/OIID
+// v0.4
+
+document.getElementById("btn-exit").addEventListener("mousedown", hideAll);
+document.getElementById("btn-menu").addEventListener("mousedown", afterToMain);
+document.getElementById("btn-howto").addEventListener("mousedown", howTo);
 
 function hideAll() {
     document.getElementById("hideall").style.zIndex = "10";

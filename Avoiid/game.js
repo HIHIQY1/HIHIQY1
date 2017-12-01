@@ -1,13 +1,16 @@
-﻿var intervalTime;
+﻿// /\/OIID
+// v0.4
+
+var intervalTime;
 var score;
 var canMove = false;
 
-document.getElementById("btn-play").addEventListener("click", function() { startGame("menu"); });
-document.getElementById("btn-play-again").addEventListener("click", function() { startGame("afterlevelmenu"); });
-document.getElementById("fourth-1").addEventListener("click", function() { movePlayer(1); });
-document.getElementById("fourth-2").addEventListener("click", function() { movePlayer(2); });
-document.getElementById("fourth-3").addEventListener("click", function() { movePlayer(3); });
-document.getElementById("fourth-4").addEventListener("click", function() { movePlayer(4); });
+document.getElementById("btn-play").addEventListener("mousedown", function() { startGame("menu"); });
+document.getElementById("btn-play-again").addEventListener("mousedown", function() { startGame("afterlevelmenu"); });
+document.getElementById("fourth-1").addEventListener("mousedown", function() { movePlayer(1); });
+document.getElementById("fourth-2").addEventListener("mousedown", function() { movePlayer(2); });
+document.getElementById("fourth-3").addEventListener("mousedown", function() { movePlayer(3); });
+document.getElementById("fourth-4").addEventListener("mousedown", function() { movePlayer(4); });
 
 document.addEventListener("keydown", function(e) { keyPress(e); });
 
