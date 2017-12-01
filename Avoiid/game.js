@@ -1,5 +1,7 @@
 ﻿// /\/OIID
-// v0.4
+// v0.5
+// Made by HIHIQY1
+// Do not copy!
 
 var intervalTime;
 var score;
