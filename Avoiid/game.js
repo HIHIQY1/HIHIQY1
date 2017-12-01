@@ -90,11 +90,12 @@ function update() {
     
     // Score
     score = score + 1;
+    console.log("score = " + score);
     
     // Timing changes
     if (intervalTime > 500) { intervalTime = intervalTime - 10; }
     else if (intervalTime > 100) { intervalTime = intervalTime - 5; }
-    else if (intervalTime > 50) { intervalTime = intervalTime - 1; }
+    //else if (intervalTime > 50) { intervalTime = intervalTime - 1; }
     //if (intervalTime < 750) { document.getElementById("canGoFurther").innerHTML = "0"; }
     
     // If can go further
