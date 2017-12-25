@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: url(https://HIHIQY1.github.io/HIHIQY1/bg.png);
+    color: white;
+}
+
+div#content-wrapper {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    width: 90%;
+    height: 50%;
+    text-align: center;
+    box-shadow: 0 0 15px 0 white;
+    border-radius: 2.5vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+div#content {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+div#content * {
+    margin: 0;
+}
