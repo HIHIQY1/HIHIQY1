@@ -3,6 +3,7 @@ body {
     font-family: Arial;
     background: url(https://HIHIQY1.github.io/HIHIQY1/bg.png);
     color: white;
+    overflow: hidden;
 }
 
 div#content-wrapper {
@@ -24,4 +25,28 @@ div#content {
 }
 div#content * {
     margin: 0;
+}
+
+.main-panel {
+    position: absolute;
+}
+
+.level-button {
+    position: relative;
+    float: left;
+    margin-top: 5vh;
+    margin-left: 5%;
+    width: 42.5%;
+    height: 25vh;
+    background-color: rgba(255, 255, 255, .25);
+    box-shadow: 0 0 15px 0 white;
+    border-radius: 2.5vh;
+    font-size: 8vh;
+    cursor: pointer;
+}
+.level-button span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
