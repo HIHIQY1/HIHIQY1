@@ -16,7 +16,6 @@ function render() {
 
     var tasks = JSON.parse(localStorage.getItem("tasks"));
     if (tasks != null) {
-        //console.log(tasks);
         for (i = 0; i < tasks.length; i++) {
             if (tasks[i].priority == "high") {
                 // Add task to visible
@@ -69,9 +68,9 @@ function addTask(name, priority) {
     render();
 }
 
-if (!window.location.toString().includes(".io/HIHIQY1")) {
-    window.location = "https://duckduckgo.com";
-}
+//if (!window.location.toString().includes(".io/HIHIQY1")) {
+//    window.location = "https://duckduckgo.com";
+//}
 
 function removeTask(name) {
     var currentTasks = [];
