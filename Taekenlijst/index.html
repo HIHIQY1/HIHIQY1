@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Taekenlijst</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css">
+    <link rel="icon" sizes="256x256" href="Taekenlijst_logo256.png">
+</head>
+
+<body>
+    <div id="main">
+        <div id="header">
+            <img id="logo" src="Taekenlijst_logo512.png">
+            <div id="btn-add">+</div>
+        </div>
+
+        <div id="list-container">
+            <div class="task highpriority">
+                <span class="btn-remove">X</span>
+            </div>
+            <div class="task midpriority">
+                <span class="btn-remove">X</span>
+            </div>
+            <div class="task lowpriority">
+                <span class="btn-remove">X</span>
+            </div>
+        </div>
+
+        <div id="panel-add-task">
+            <div id="btn-close">X</div>
+            <div id="add-form">
+                <span class="title">Task name:</span><br>
+                <input id="add-task-name" class="field" placeholder="Name" maxlength="255"><br>
+                <span class="title">Task priority:</span><br>
+                <select id="add-task-priority" class="field">
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                </select>
+                <div id="btn-add-task" class="button">Add</div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="manifest" href="manifest.json">
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+body {
+    margin: 0;
+    background-color: rgb(100, 100, 100);
+    font-family: Oswald, Arial;
+    overflow-x: hidden;
+}
+
+* * {
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    margin: 0;
+}
+
+#header {
+    position: absolute;
+    width: 100%;
+    height: 10vh;
+    background-color: rgb(125, 125, 125);
+}
+#logo {
+    position: absolute;
+    max-height: 100%;
+}
+#btn-add {
+    position: absolute;
+    right: 0;
+    margin: 0;
+    width: 10vh;
+    font-family: Arial;
+    font-size: 9vh;
+    text-align: center;
+    cursor: pointer;
+}
+
+#list-container {
+    position: absolute;
+    left: 2.5%;
+    top: 12.5vh;
+    width: 95%;
+    height: 85vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.task {
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    float: left;
+    margin-bottom: 1vh;
+    background-color: rgb(75, 75, 75);
+}
+.highpriority {
+    background: linear-gradient(rgb(75, 75, 75), rgb(100, 75, 75));
+}
+.midpriority {
+    background: linear-gradient(rgb(75, 75, 75), rgb(100, 100, 75));
+}
+.lowpriority {
+    background: rgb(75, 75, 75);
+}
+.btn-remove {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 5vh;
+    font-family: Arial;
+    font-size: 4vh;
+    text-align: center;
+    cursor: pointer;
+}
+h2 {
+    color: white;
+    margin-right: 5vh;
+}
+
+#panel-add-task {
+    position: absolute;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(150, 150, 150);
+}
+#btn-close {
+    position: absolute;
+    right: 0;
+    margin: 0;
+    width: 6vh;
+    font-family: Arial;
+    font-size: 5vh;
+    text-align: center;
+    cursor: pointer;
+}
+#add-form {
+    position: absolute;
+    left: 2.5%;
+    width: 95%;
+    top: 7.5vh;
+}
+#add-form * {
+    font-size: 5vw;
+}
+.field {
+    width: 100%;
+    margin-bottom: 2.5vh;
+    border: none;
+    border-radius: 1vh;
+    padding: 1vh;
+    box-sizing: border-box;
+}
+.field:focus {
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+}
+.title {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    text-align: center;
+}
+#btn-add-task {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    min-width: 50%;
+    max-width: 100%;
+    text-align: center;
+    color: white;
+    background-color: black;
+    border-radius: 1vh;
+    padding: 1vh;
+    box-sizing: border-box;
+    cursor: pointer;
+}
