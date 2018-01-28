@@ -96,15 +96,16 @@ function removeTask(name) {
 
 function addFromForm() {
     var taskName = document.getElementById("add-task-name").value;
-    var prioritySelect = document.getElementById("add-task-priority");
-    var taskPriority = prioritySelect.options[prioritySelect.selectedIndex].text.toLowerCase();
-    if (taskPriority == "medium") { taskPriority = "mid" }
-    addTask(taskName, taskPriority);
-    hideTaskPanel();
+    if (taskName.length > 0) {
+        var prioritySelect = document.getElementById("add-task-priority");
+        var taskPriority = prioritySelect.options[prioritySelect.selectedIndex].text.toLowerCase();
+        if (taskPriority == "medium") { taskPriority = "mid" }
+        addTask(taskName, taskPriority);
+        hideTaskPanel();
+    }
 }
 
 function removeFromButton(e) {
-    //console.log(e.target.parentNode);
     var targetParent = e.target.parentNode;
     var title = targetParent.getElementsByTagName("h2")[0].innerHTML;
     targetParent.style.opacity = "0";
