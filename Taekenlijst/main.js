@@ -12,7 +12,7 @@ function hideTaskPanel() {
 }
 
 function render() {
-    document.getElementById("list-container").innerHTML = null;
+    document.getElementById("list-container").innerHTML = "";
 
     var tasks = JSON.parse(localStorage.getItem("tasks"));
     if (tasks != null) {
@@ -68,9 +68,9 @@ function addTask(name, priority) {
     render();
 }
 
-//if (!window.location.toString().includes(".io/HIHIQY1")) {
-//    window.location = "https://duckduckgo.com";
-//}
+if (!window.location.toString().includes(".io/HIHIQY1")) {
+    window.location = "https://duckduckgo.com";
+}
 
 function removeTask(name) {
     var currentTasks = [];
