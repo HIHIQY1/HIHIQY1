@@ -1,7 +1,12 @@
+// COPYLEFT (ᴐ) HIHIQY1 2018
+
 document.getElementById("btn-add").addEventListener("click", showTaskPanel);
 document.getElementById("btn-close").addEventListener("click", hideTaskPanel);
 document.getElementById("btn-add-task").addEventListener("click", addFromForm);
+document.getElementById("welcomeokbutton").addEventListener("click", welcomeOK);
+window.addEventListener("orientationchange", antiRotate);
 
+checkWelcome();
 render();
 
 function showTaskPanel() {
@@ -68,9 +73,9 @@ function addTask(name, priority) {
     render();
 }
 
-if (!window.location.toString().includes(".io/HIHIQY1")) {
-    window.location = "https://duckduckgo.com";
-}
+//if (!window.location.toString().includes(".io/HIHIQY1")) {
+//    window.location = "https://duckduckgo.com";
+//}
 
 function removeTask(name) {
     var currentTasks = [];
@@ -110,4 +115,23 @@ function removeFromButton(e) {
     var title = targetParent.getElementsByTagName("h2")[0].innerHTML;
     targetParent.style.opacity = "0";
     setTimeout(function () { removeTask(title); }, 1000);
+}
+
+function checkWelcome() {
+    var answer = localStorage.getItem("welcome");
+    if (answer == null) {
+        document.getElementById("welcomepanel").style.right = "0";
+    }
+}
+
+function welcomeOK() {
+    localStorage.setItem("welcome", "OK");
+    document.getElementById("welcomepanel").style.transitionDuration = "1s";
+    document.getElementById("welcomepanel").style.right = "-100%";
+}
+
+function antiRotate() {
+    if (window.innerHeight > window.innerWidth) {
+        document.getElementsByTagName('body')[0].style.transform = "rotate(90deg)";
+    }
 }
