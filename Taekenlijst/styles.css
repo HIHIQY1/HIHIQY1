@@ -75,6 +75,7 @@ body {
     font-size: 9vh;
     text-align: center;
     cursor: pointer;
+    line-height: 10vh;
 }
 
 #list-container {
@@ -95,6 +96,7 @@ body {
     background-color: rgb(75, 75, 75);
     padding: 1vh;
     box-sizing: border-box;
+    word-break: break-all;
 }
 .highpriority {
     background: linear-gradient(rgb(75, 75, 75), rgb(100, 75, 75));
@@ -164,4 +166,11 @@ h2 {
     display: inline-block;
     text-align: center;
     font-size: 5vw;
+}
+
+
+@media only screen and (orientation: landscape) {
+    * {
+        display: none;
+    }
 }
