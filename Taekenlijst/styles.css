@@ -71,11 +71,16 @@ body {
     right: 0;
     margin: 0;
     width: 10vh;
+    height: 10vh;
     font-family: Arial;
-    font-size: 9vh;
     text-align: center;
     cursor: pointer;
-    line-height: 10vh;
+}
+#btn-add img {
+    margin-left: 12.5%;
+    margin-top: 12.5%;
+    width: 75%;
+    height: 75%;
 }
 
 #list-container {
@@ -170,7 +175,7 @@ h2 {
 
 
 @media only screen and (orientation: landscape) {
-    * {
-        display: none;
+    .task {
+        min-height: 20vh;
     }
 }
