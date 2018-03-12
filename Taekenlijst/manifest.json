@@ -1,6 +1,6 @@
 {
     "background_color": "rgb(100, 100, 100)",
-    "description": "Do list to do",
+    "description": "To do list",
     "display": "fullscreen",
     "icons": [
         {
@@ -22,6 +22,6 @@
     ],
     "name": "Taekenlijst",
     "orientation": "portrait",
-    "short_name": "Taeken",
+    "short_name": "Taekenlijst",
     "theme_color": "rgb(100, 100, 100)"
 }

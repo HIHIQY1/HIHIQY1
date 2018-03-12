@@ -24,24 +24,24 @@ function render() {
             if (tasks[i].priority == "high") {
                 // Add task to visible
                 var listContainer = document.getElementById("list-container");
-                listContainer.innerHTML += "<div class=\"task " + tasks[i].priority + "priority\"><h2>" +
-                    tasks[i].name + "</h2><span class=\"btn-remove\">X</span></div>";
+                listContainer.innerHTML += "<div class=\"task " + tasks[i].priority + "priority\"><p>" +
+                    tasks[i].name + "</p><span class=\"btn-remove\">X</span></div>";
             }
         }
         for (i = 0; i < tasks.length; i++) {
             if (tasks[i].priority == "mid") {
                 // Add task to visible
                 var listContainer = document.getElementById("list-container");
-                listContainer.innerHTML += "<div class=\"task " + tasks[i].priority + "priority\"><h2>" +
-                    tasks[i].name + "</h2><span class=\"btn-remove\">X</span></div>";
+                listContainer.innerHTML += "<div class=\"task " + tasks[i].priority + "priority\"><p>" +
+                    tasks[i].name + "</p><span class=\"btn-remove\">X</span></div>";
             }
         }
         for (i = 0; i < tasks.length; i++) {
             if (tasks[i].priority == "low") {
                 // Add task to visible
                 var listContainer = document.getElementById("list-container");
-                listContainer.innerHTML += "<div class=\"task " + tasks[i].priority + "priority\"><h2>" +
-                    tasks[i].name + "</h2><span class=\"btn-remove\">X</span></div>";
+                listContainer.innerHTML += "<div class=\"task " + tasks[i].priority + "priority\"><p>" +
+                    tasks[i].name + "</p><span class=\"btn-remove\">X</span></div>";
             }
         }
 
@@ -105,11 +105,16 @@ function addFromForm() {
         addTask(taskName, taskPriority);
         hideTaskPanel();
     }
+    else {
+        var taskNameElement = document.getElementById("add-task-name");
+        taskNameElement.style.backgroundColor = "rgb(225, 75, 75)";
+        setTimeout(function() { taskNameElement.style.backgroundColor = ""; }, 1000);
+    }
 }
 
 function removeFromButton(e) {
     var targetParent = e.target.parentNode;
-    var title = targetParent.getElementsByTagName("h2")[0].innerHTML;
+    var title = targetParent.getElementsByTagName("p")[0].innerHTML;
     targetParent.style.opacity = "0";
     removeTask(title);
     setTimeout(function () { render(); }, 1000);
@@ -119,6 +124,7 @@ function checkWelcome() {
     var answer = localStorage.getItem("welcome");
     if (answer == null) {
         document.getElementById("welcomepanel").style.right = "0";
+        document.getElementById("welcomepanel").style.display = "initial";
     }
 }
 
@@ -126,4 +132,5 @@ function welcomeOK() {
     localStorage.setItem("welcome", "OK");
     document.getElementById("welcomepanel").style.transitionDuration = "1s";
     document.getElementById("welcomepanel").style.right = "-100%";
+    setTimeout(function () { document.getElementById("welcomepanel").style.display = "none"; }, 1000);
 }
