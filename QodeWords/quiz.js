@@ -5,6 +5,7 @@ var levelJSON;
 var currentQuestion = 0;
 var score = 0;
 var canAnswer = true;
+var badAnswers = [];
 
 function setup(levelData) {
     levelJSON = levelData;
@@ -12,6 +13,7 @@ function setup(levelData) {
     currentQuestion = 0;
     score = 0;
     canAnswer = true;
+    badAnswers = [];
 
     renderQuestion();
 }
@@ -38,6 +40,9 @@ function answerClick(e) {
         var answerIndex = e.target.getAttribute("answerindex");
         if (answerIndex == levelJSON.questions[currentQuestion].correctAnswer) {
             score = score + 10;
+        }
+        else {
+            badAnswers.push(currentQuestion);
         }
 
         var answers = document.getElementsByClassName("quizanswer");
@@ -72,30 +77,43 @@ function nextQuestion() {
         }, 500);
     }
     else {
-        console.log("swart");
-
-        document.getElementById("swart").style.height = "100vh";
-        document.getElementById("swart").style.opacity = "1";
-
-        setTimeout(function() {
-            document.getElementById("end").style.display = "block";
-
-            var canvas = document.getElementById("scorec");
-            var ctx = canvas.getContext("2d");
-            canvas.width = canvas.getBoundingClientRect().width;
-            canvas.height = canvas.getBoundingClientRect().height;
-            ctx.lineWidth = 2;
-            ctx.font = canvas.width * 10 / 100 + "px Arial";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.strokeText("Score: " + score + "/" + levelJSON.questions.length * 10, canvas.width / 2, canvas.height / 2);
-
-            document.getElementById("swart").style.opacity = "0";
-            setTimeout(function() { document.getElementById("swart").style.height = "0"; }, 500);
-        }, 750);
-
-        console.log("end, score was " + score);
+        endQuiz();
     }
+}
+
+function endQuiz() {
+    console.log("swart");
+
+    document.getElementById("swart").style.height = "100vh";
+    document.getElementById("swart").style.opacity = "1";
+
+    setTimeout(function () {
+        document.getElementById("end").style.display = "block";
+
+        var canvas = document.getElementById("scorec");
+        var ctx = canvas.getContext("2d");
+        canvas.width = canvas.getBoundingClientRect().width;
+        canvas.height = canvas.getBoundingClientRect().height;
+        ctx.lineWidth = 2;
+        ctx.font = canvas.width * 10 / 100 + "px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.strokeText("Score: " + score + "/" + levelJSON.questions.length * 10, canvas.width / 2, canvas.height / 2);
+
+        var badAnswersEle = document.getElementById("wrong-answers");
+        badAnswersEle.innerHTML = "";
+        badAnswersEle.innerHTML += "<h2>These were your wrong answers:</h2>";
+        for (i = 0; i < badAnswers.length; i++) {
+            var badQue = levelJSON.questions[badAnswers[i]];
+            badAnswersEle.innerHTML += "<div class=\"wrong-answer\"><h1> " +
+            badQue.question + "</h1><p>" + badQue.answers[badQue.correctAnswer] + "</p></div>";
+        }
+
+        document.getElementById("swart").style.opacity = "0";
+        setTimeout(function () { document.getElementById("swart").style.height = "0"; }, 500);
+    }, 750);
+
+    console.log("end, score was " + score);
 }
 
 document.getElementById("btn-retry").addEventListener("click", restart);

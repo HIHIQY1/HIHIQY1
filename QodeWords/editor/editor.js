@@ -39,6 +39,7 @@ function quePlus() {
         "correctAnswer": 0
     });
 
+    save();
     fillIn();
 }
 
@@ -47,6 +48,10 @@ function queMin() {
         levelJSON.questions.pop();
     }
 
+    save();
+    if (selectedQuestion == levelJSON.questions.length) {
+        selectedQuestion = levelJSON.questions.length - 1;
+    }
     fillIn();
 }
 
@@ -100,6 +105,8 @@ function addAns() {
     levelJSON.questions[selectedQuestion].answers.push("");
     save();
     fillIn();
+
+    focusLastAnswer();
 }
 
 function remAns() {
@@ -108,6 +115,8 @@ function remAns() {
     }
     fillIn();
     save();
+
+    focusLastAnswer();
 }
 
 function save() {
@@ -131,6 +140,7 @@ function save() {
 }
 
 function getCode() {
+    save();
     document.getElementById("code").value = btoa(JSON.stringify(levelJSON));
     console.log("base64 code is " + btoa(JSON.stringify(levelJSON)).length);
     console.log("json.stringify code is " + JSON.stringify(levelJSON).length);
@@ -147,4 +157,10 @@ function loadFromCode() {
             fillIn();
         }
     }
+}
+
+function focusLastAnswer() {
+    var answersDiv = document.getElementById("answers");
+    var answersDivChilds = answersDiv.children;
+    answersDivChilds[answersDivChilds.length - 4].focus();
 }
