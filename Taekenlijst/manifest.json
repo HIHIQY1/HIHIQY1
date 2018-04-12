@@ -1,8 +1,4 @@
 {
-    "name": "Taekenlijst",
-    "orientation": "portrait",
-    "short_name": "Taekenlijst",
-    "theme_color": "rgb(100, 100, 100)",
     "background_color": "rgb(100, 100, 100)",
     "description": "To do list",
     "display": "fullscreen",
@@ -23,5 +19,9 @@
             "src": "TaekenLijst_logo512.png",
             "sizes": "512x512"
         }
-    ]
+    ],
+    "name": "Taekenlijst",
+    "orientation": "portrait",
+    "short_name": "Taekenlijst",
+    "theme_color": "rgb(100, 100, 100)"
 }
