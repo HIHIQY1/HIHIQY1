@@ -15,10 +15,8 @@ iframe {
     border: none;
 }
 a {
-    text-decoration: none;
     color: rgb(100, 255, 100);
 }
-a:hover { text-decoration: underline; }
 
 h1 { font-size: 100px; }
 h2 { font-size: 87.5px; }
@@ -30,13 +28,6 @@ p, a { font-size: 25px; }
 
 /* Vanaf hier algemeen en homepage */
 div#title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    max-height: 50vh;
-    //line-height: 0;
-    overflow-y: auto;
-    //background-color: red;
     text-align: center;
 }
 div#title h1 {
@@ -45,11 +36,11 @@ div#title h1 {
 }
 
 div#content {
-    position: absolute;
-    top: 50vh;
+    position: relative;
+    display: inline-block;
+    margin-top: 5vh;
     left: 5vw;
     width: 90vw;
-    //background-color: yellow;
     padding-bottom: 3.25vw;
 }
 div.tile {
@@ -59,21 +50,21 @@ div.tile {
     float: left;
     margin-left: 3.25vw;
     margin-top: 3.25vw;
-    background-color: rgba(255, 255, 255, .1);
-    box-shadow: 0 0 25px rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, .25);
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .8);
     border-radius: 2vw;
+    box-sizing: border-box;
+    padding: 1vw;
 }
 a.tile-link {
     position: absolute;
-    bottom: 0;
-    right: 2vw;
+    bottom: 1vw;
+    right: 1vw;
 }
 div.tile-text {
     position: relative;
-    margin-top: 1vw;
     width: 100%;
     height: 80%;
-    //background-color: red;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -82,10 +73,9 @@ div.tile p, div.tile h1, div.tile h2, div.tile h3, div.tile h4, div.tile h5, div
 }
 
 div#menu {
-    position: absolute;
-    bottom: 50vh;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    display: inline-block;
+    margin-top: 5vh;
     width: 100%;
     text-align: center;
 }
@@ -107,21 +97,21 @@ div#page-tile p, div#page-tile h1, div#page-tile h2, div#page-tile h3, div#page-
 
 div#page-tile {
     position: relative;
-    width: 85vw;
+    width: 83.5vw;
     padding-bottom: 10vh;
-    margin-left: 2.5vw;
-    margin-top: 10vh;
-    background-color: rgba(255, 255, 255, .1);
-    box-shadow: 0 0 25px rgb(255, 255, 255);
+    margin-left: 3.25vw;
+    margin-top: 3.25vw;
+    background-color: rgba(255, 255, 255, .25);
+    box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, .8);
     border-radius: 2vw;
+
+    box-sizing: border-box;
+    padding: 1vw;
 }
 div#page-tile-text {
     position: relative;
-    top: 1vw;
     width: 100%;
-    height: 80%;
-    //background-color: red;
-    overflow-y: auto;
+    margin-bottom: Calc(20px * 1.2);
     overflow-x: hidden;
 }
 div#page-tile p#datetime {
@@ -130,6 +120,12 @@ div#page-tile p#datetime {
     right: 1vw;
     color: rgb(128, 128, 128);
     font-size: 20px;
+}
+
+#lol {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* Vanaf hier RWD */
