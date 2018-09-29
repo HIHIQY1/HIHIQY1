@@ -41,6 +41,7 @@ body {
     color: white;
     user-select: none;
     -webkit-user-select: none;
+    cursor: default;
     font-size: 3vh;
     padding: 2vh;
     box-sizing: border-box;
@@ -124,6 +125,7 @@ body {
     z-index: 3;
     user-select: none;
     -webkit-user-select: none;
+    cursor: default;
     box-sizing: border-box;
     padding: 2vh;
     overflow-x: hidden;

@@ -279,7 +279,7 @@ function renderAppPage(selectedApp) {
         appPageTransition.style.height = bodyStyle.height;
         appPageTransition.style.borderRadius = "0";
         appPage.style.transitionDuration = "0s";
-        document.getElementById("main-wrapper").style.transform = "scale(1.1)";
+        document.getElementById("main-wrapper").style.transform = "scale(.9)";
     }, 0);
     setTimeout(() => {
         appPageTransition.style.opacity = 0;
