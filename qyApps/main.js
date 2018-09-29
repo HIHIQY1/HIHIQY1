@@ -13,6 +13,7 @@ function setup() {
     mobileCheck();
     renderToolbar();
     loadApps();
+    setTimeout(checkSelected, 100);
 }
 
 function renderToolbar() {
@@ -77,6 +78,7 @@ function renderApps() {
     for (let app of qyApps) {
         let appTile = document.createElement("div");
         appTile.classList.add("tile");
+        appTile.setAttribute("appid", app.id);
 
         let appTileTitle = document.createElement("div");
         appTileTitle.classList.add("tiletitle");
@@ -85,7 +87,14 @@ function renderApps() {
 
         let appTilePlatforms = document.createElement("div");
         appTilePlatforms.classList.add("tileplatforms", "tileinfo");
-        appTilePlatforms.textContent = "Platforms: " + (app.platforms).toString();
+        let platformsString = "";
+        for (let i = 0; i < app.platforms.length; i++) {
+            platformsString += app.platforms[i].replace(/\b\w/g, l => l.toUpperCase());
+            if (i != app.platforms.length - 1) {
+                platformsString += ", ";
+            }
+        }
+        appTilePlatforms.textContent = "Platforms: " + platformsString;
         appTile.appendChild(appTilePlatforms);
 
         let appTileRelease = document.createElement("div");
@@ -93,7 +102,7 @@ function renderApps() {
         appTileRelease.textContent = "Release: " + app.release;
         appTile.appendChild(appTileRelease);
 
-        appTile.addEventListener("mouseup", () => openAppPage(app.id));
+        appTile.addEventListener("mouseup", (e) => openAppPage(e, app.id));
 
         if (specifiedCategory && app.category) {
             if (app.category == specifiedCategory) {
@@ -105,8 +114,28 @@ function renderApps() {
     }
 }
 
-function openAppPage(id) {
+function openAppPage(e, id) {
     let selectedApp = qyApps.filter(app => app.id == id)[0];
+
+    let usp = new URLSearchParams(location.search);
+    usp.set("selectedApp", id);
+    let tmpurl = new URL(window.location);
+    tmpurl.search = usp;
+    window.history.pushState({}, "", tmpurl);
+
+    let appPageTransition = document.getElementById("apppagetransition");
+    let transitionStyle = window.getComputedStyle(e.currentTarget);
+    appPageTransition.style.height = parseFloat(transitionStyle.getPropertyValue("height")) +
+        parseFloat(transitionStyle.getPropertyValue("padding-bottom")) +
+        parseFloat(transitionStyle.getPropertyValue("padding-top")) +
+        "px";
+    appPageTransition.style.top = e.currentTarget.getBoundingClientRect().top -
+        parseFloat(transitionStyle.getPropertyValue("padding-top")) +
+        "px";
+    appPageTransition.style.left = e.currentTarget.getBoundingClientRect().left + "px";
+    appPageTransition.style.visibility = "initial";
+    appPageTransition.style.opacity = 1;
+
 
     renderAppPage(selectedApp);
 }
@@ -140,62 +169,153 @@ function renderAppPage(selectedApp) {
 
     {
         let spacer = document.createElement("div");
-        spacer.classList.add("spacer");
+        spacer.classList.add("spacer2");
         appPage.appendChild(spacer);
+    }
+    {
+        let line = document.createElement("div");
+        line.classList.add("line");
+        appPage.appendChild(line);
     }
 
     {
         if (selectedApp.downloads) {
-            for (let dl of Object.keys(selectedApp.downloads)) {
-                let dlBtn = document.createElement("div");
-                dlBtn.classList.add("downloadbutton");
-                dlBtn.textContent = dl + " download";
-                dlBtn.addEventListener("mouseup", () => window.location.href = selectedApp.downloads[dl]);
-                appPage.appendChild(dlBtn);
+            {
+                let spacer = document.createElement("div");
+                spacer.classList.add("spacer2");
+                appPage.appendChild(spacer);
             }
 
-            let spacer = document.createElement("div");
-            spacer.classList.add("spacer");
-            appPage.appendChild(spacer);
+            let appDownloadsTitle = document.createElement("div");
+            appDownloadsTitle.classList.add("apppageheader");
+            appDownloadsTitle.innerText = "Downloads";
+            appPage.appendChild(appDownloadsTitle);
+
+            {
+                let spacer = document.createElement("div");
+                spacer.classList.add("spacer");
+                appPage.appendChild(spacer);
+            }
+
+            let dls = Object.keys(selectedApp.downloads)
+            for (let i = 0; i < dls.length; i++) {
+                let dlBtn = document.createElement("div");
+                dlBtn.classList.add("downloadbutton");
+                dlBtn.textContent = dls[i].replace(/\b\w/g, l => l.toUpperCase()) + " download";
+                dlBtn.addEventListener("mouseup", () => window.location.href = selectedApp.downloads[dls[i]]);
+                appPage.appendChild(dlBtn);
+
+                let spacer = document.createElement("div");
+                spacer.classList.add(i != dls.length - 1 ? "spacer" : "spacer2");
+                appPage.appendChild(spacer);
+            }
+
+            let line = document.createElement("div");
+            line.classList.add("line");
+            appPage.appendChild(line);
         }
     }
 
     if (selectedApp.description) {
+        {
+            let spacer = document.createElement("div");
+            spacer.classList.add("spacer2");
+            appPage.appendChild(spacer);
+        }
+
         let appDescriptionTitle = document.createElement("div");
-        appDescriptionTitle.id = "appinfotitle";
+        appDescriptionTitle.classList.add("apppageheader");
         appDescriptionTitle.innerText = "App Description";
         appPage.appendChild(appDescriptionTitle);
 
         let appDescription = document.createElement("div");
-        appDescription.id = "appdescription";
+        appDescription.classList.add("apppageparagraph");
         appDescription.innerText = selectedApp.description;
         appPage.appendChild(appDescription);
 
         {
-            let spacer = document.createElement("div");
-            spacer.classList.add("spacer");
-            appPage.appendChild(spacer);
+            {
+                let spacer = document.createElement("div");
+                spacer.classList.add("spacer2");
+                appPage.appendChild(spacer);
+            }
+            let line = document.createElement("div");
+            line.classList.add("line");
+            appPage.appendChild(line);
+            {
+                let spacer = document.createElement("div");
+                spacer.classList.add("spacer2");
+                appPage.appendChild(spacer);
+            }
         }
     }
 
     let appInfoTitle = document.createElement("div");
-    appInfoTitle.id = "appinfotitle";
+    appInfoTitle.classList.add("apppageheader");
     appInfoTitle.innerText = "App Info";
     appPage.appendChild(appInfoTitle);
 
     let appInfo = document.createElement("div");
-    appInfo.id = "appinfo";
+    appInfo.classList.add("apppageparagraph");
     appInfo.innerText = "Platforms: " + selectedApp.platforms +
         "\nRelease: " + selectedApp.release +
         "\nCategory: " + selectedApp.category +
         "\nVersion: " + selectedApp.version;
     appPage.appendChild(appInfo);
 
-    appPage.style.top = 0;
+    {
+        let spacer = document.createElement("div");
+        spacer.classList.add("spacer2");
+        appPage.appendChild(spacer);
+    }
+
+    let bodyStyle = window.getComputedStyle(document.body)
+    let appPageTransition = document.getElementById("apppagetransition");
+    appPageTransition.style.transitionDuration = ".5s";
+    setTimeout(() => {
+        appPageTransition.style.top = "0px";
+        appPageTransition.style.left = "0px";
+        appPageTransition.style.width = bodyStyle.width;
+        appPageTransition.style.height = bodyStyle.height;
+        appPageTransition.style.borderRadius = "0";
+        appPage.style.transitionDuration = "0s";
+        document.getElementById("main-wrapper").style.transform = "scale(1.1)";
+    }, 0);
+    setTimeout(() => {
+        appPageTransition.style.opacity = 0;
+        appPageTransition.style.visibility = "";
+        appPage.style.top = 0;
+    }, 500);
 }
+
 function closeAppPage() {
     let appPage = document.getElementById("apppage");
-    appPage.style.top = "100vh";
+    appPage.style.transform = "scale(.5)";
+    appPage.style.opacity = "0";
+    appPage.style.borderRadius = "5vw";
+    appPage.style.transitionDuration = ".5s";
+    document.getElementById("main-wrapper").style.transform = "";
+    setTimeout(() => {
+        appPage.style.transitionDuration = "0s";
+        appPage.style.opacity = "";
+        appPage.style.transform = "";
+        appPage.style.top = "";
+        appPage.style.borderRadius = "";
+    }, 500);
+
+    let appPageTransition = document.getElementById("apppagetransition");
+    appPageTransition.style.width = "";
+    appPageTransition.style.height = "";
+    appPageTransition.style.top = "";
+    appPageTransition.style.left = "";
+    appPageTransition.style.transitionDuration = "";
+    appPageTransition.style.borderRadius = "";
+    appPageTransition.style.opacity = "";
+    appPageTransition.style.visibility = "";
+
+    let tmpurl = new URL(window.location);
+    tmpurl.search = "";
+    window.history.pushState({}, "", tmpurl);
 }
 
 function mobileCheck() {
@@ -204,5 +324,16 @@ function mobileCheck() {
         isMobile = true;
     } else {
         isMobile = false;
+    }
+}
+
+function checkSelected() {
+    let usp = new URLSearchParams(location.search);
+    let selectedApps = usp.get("selectedApp");
+    if (selectedApps) {
+        let appTile = Array.from(document.getElementsByClassName("tile")).filter(tile => tile.getAttribute("appid") == selectedApps)[0];
+        openAppPage({
+            "currentTarget": appTile
+        }, selectedApps);
     }
 }
