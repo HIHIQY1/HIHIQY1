@@ -99,9 +99,3 @@
     transition-duration: .5s;
     transition-timing-function: cubic-bezier(.5, .5, 0, 1);
 }
-
-@media only screen and (orientation: portrait) {
-    .quizanswer {
-        padding: 3vh;
-    }
-}
