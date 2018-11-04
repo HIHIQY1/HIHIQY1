@@ -13,6 +13,13 @@ p {
     margin: 0;
     font-size: 2em;
 }
+ul {
+    margin: 0;
+    font-size: 2em;
+}
+a {
+    color: rgb(100, 255, 100);
+}
 
 #main {
     z-index: 2;
@@ -133,6 +140,10 @@ p {
     display: none;
 }
 #pnl-quizcredits {
+    display: none;
+    text-align: center;
+}
+#pnl-about {
     display: none;
     text-align: center;
 }

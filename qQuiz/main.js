@@ -6,6 +6,8 @@ let Btn_LoadToMain = document.getElementById("btn-loadtomain");
 let Pnl_QuizCredits = document.getElementById("pnl-quizcredits");
 let Btn_CreditsToLoad = document.getElementById("btn-creditstoload");
 let Btn_StartQuiz = document.getElementById("btn-startquiz");
+let Pnl_About = document.getElementById("pnl-about");
+let Btn_AboutToMain = document.getElementById("btn-abouttomain");
 
 let tempLevelJSON;
 
@@ -41,6 +43,42 @@ function setupMain() {
     });
     Pnl_ButtonContainer.appendChild(Btn_ToEditor);
 
+    {
+        let newSpacer = document.createElement("div");
+        newSpacer.classList.add("spacer2");
+        Pnl_ButtonContainer.appendChild(newSpacer);
+    }
+
+    let Btn_About = document.createElement("div");
+    Btn_About.classList.add("button");
+    Btn_About.innerText = "About qQuiz";
+    Btn_About.addEventListener("click", () => {
+        document.getElementById("swart").style.height = "100vh";
+        document.getElementById("swart").style.opacity = "1";
+        setTimeout(() => {
+            Pnl_Main.style.display = "none";
+            Pnl_About.style.display = "initial";
+            setTimeout(() => {
+                document.getElementById("swart").style.opacity = "0";
+                setTimeout(() => { document.getElementById("swart").style.height = "0"; }, 750);
+            }, 250);
+        }, 500);
+    });
+    Pnl_ButtonContainer.appendChild(Btn_About);
+
+    Btn_AboutToMain.addEventListener("click", () => {
+        document.getElementById("swart").style.height = "100vh";
+        document.getElementById("swart").style.opacity = "1";
+        setTimeout(() => {
+            Pnl_About.style.display = "";
+            Pnl_Main.style.display = "";
+            setTimeout(() => {
+                document.getElementById("swart").style.opacity = "0";
+                setTimeout(() => { document.getElementById("swart").style.height = "0"; }, 750);
+            }, 250);
+        }, 500)
+    });
+
     Btn_LoadToMain.addEventListener("click", () => {
         Pnl_Load.style.display = "";
         Pnl_Main.style.display = "";
@@ -57,7 +95,7 @@ function setupMain() {
 
     Btn_StartQuiz.addEventListener("click", () => {
         quizCreditsChecked();
-    })
+    });
 }
 
 document.getElementById("btn-load").addEventListener("mouseup", () => {

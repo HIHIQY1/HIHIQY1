@@ -2,7 +2,7 @@
     display: none;
 }
 #quizquestion {
-    font-size: 3vw;
+    font-size: 3em;
     text-align: center;
 }
 
@@ -21,9 +21,9 @@
     min-height: Calc(2vw + 2vh);
     margin-top: 1vh;
     background-color: rgb(50, 50, 50);
-    font-size: 2vw;
+    font-size: 2em;
     box-sizing: border-box;
-    padding: 1vh;
+    padding: 2vh;
     cursor: pointer;
 
     user-select: none;
@@ -101,21 +101,7 @@
 }
 
 @media only screen and (orientation: portrait) {
-    #quizquestion {
-        font-size: 6vw;
-    }
     .quizanswer {
-        font-size: 4vw;
-    }
-
-    #end h2 {
-        font-size: 2vh;
-    }
-    .wrong-answer {
-        padding: 1vw;
-    }
-    .wrong-answer h1, .wrong-answer p {
-        margin: 0;
-        font-size: 2vh;
+        padding: 3vh;
     }
 }
