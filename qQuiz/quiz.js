@@ -28,8 +28,10 @@ function setupQuiz(levelData) {
 }
 
 function renderQuestion() {
-    questionEle.innerHTML = levelJSON.questions[currentQuestion].question;
-    answersEle.innerHTML = "";
+    questionEle.innerText = levelJSON.questions[currentQuestion].question;
+    while (answersEle.lastChild) {
+        answersEle.removeChild(answersEle.lastChild);
+    }
     for (let i = 0; i < levelJSON.questions[currentQuestion].answers.length; i++) {
         let quizAnswer = document.createElement("div");
         quizAnswer.classList.add("quizanswer");
