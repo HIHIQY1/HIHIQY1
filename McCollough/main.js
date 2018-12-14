@@ -24,6 +24,28 @@ let Btn_Finish = document.getElementById("btn-finish");
 let Btn_ToLightlyColored = document.getElementById("btn-tolightlycolored");
 let Pnl_LightlyColored = document.getElementById("pnl-lightlycolored");
 
+// Translations
+let H_The = document.getElementById("h-the");
+let H_HowItWorks = document.getElementById("h-howitworks");
+let H_Warning = document.getElementById("h-warning");
+let H_Check = document.getElementById("h-check");
+let H_Oh = document.getElementById("h-oh");
+let H_Instructions = document.getElementById("h-instructions");
+let H_Done = document.getElementById("h-done");
+let H_ThatsIt = document.getElementById("h-thatsit");
+let Par_Prestart = document.getElementById("par-prestart");
+let Par_Warning = document.getElementById("par-warning");
+let Par_Check = document.getElementById("par-check");
+let Par_Oh = document.getElementById("par-oh");
+let Par_Instructions = document.getElementById("par-instructions");
+let Par_Same = document.getElementById("par-same");
+let Par_WentWell = document.getElementById("par-wentwell");
+let Par_Finish = document.getElementById("par-finish");
+let Btn_UnsureStart = document.getElementById("btn-unsurestart");
+let Btn_ColoredHome = document.getElementById("btn-coloredhome");
+let availableTranslations = ["en", "nl"];
+let translations = [];
+
 let MainLoopId;
 let Display_Red = true;
 
@@ -129,6 +151,7 @@ Btn_ToFinal.addEventListener("click", () => {
 });
 
 Btn_Finish.addEventListener("click", () => {
+    document.body.style.backgroundColor = "";
     Pnl_Final.style.visibility = "";
     Pnl_Final.style.opacity = 0;
     setTimeout(() => {
@@ -136,6 +159,56 @@ Btn_Finish.addEventListener("click", () => {
         Pnl_Home.style.opacity = 1;
     }, 1500);
 });
+
+function loadTranslations() {
+    let availableLanguages = navigator.languages.filter(l => availableTranslations.includes(l.split("-")[0]));
+    console.log(availableLanguages);
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "Lang/" + availableLanguages[0] + ".json");
+    xhr.responseType = "json";
+    xhr.onload = e => {
+        applyTranslation(xhr.response);
+    };
+    xhr.send();
+}
+
+function applyTranslation(lang) {
+    // Headings
+    H_The.innerText = lang.headings.the;
+    H_HowItWorks.innerText = lang.headings.howitworks;
+    H_Warning.innerText = lang.headings.warning;
+    H_Check.innerText = lang.headings.check;
+    H_Oh.innerText = lang.headings.oh;
+    H_Instructions.innerText = lang.headings.instructions;
+    H_Done.innerText = lang.headings.done;
+    H_ThatsIt.innerText = lang.headings.thatsit;
+    // Paragraphs
+    Par_Home.innerText = lang.paragraphs.home;
+    Par_Prestart.innerText = lang.paragraphs.prestart;
+    Par_Warning.innerText = lang.paragraphs.warning;
+    Par_Check.innerText = lang.paragraphs.check;
+    Par_Oh.innerText = lang.paragraphs.oh;
+    Par_Instructions.innerText = lang.paragraphs.instructions;
+    Par_Same.innerText = lang.paragraphs.same;
+    Par_WentWell.innerText = lang.paragraphs.wentwell;
+    Par_Finish.innerText = lang.paragraphs.finish;
+    // Buttons
+    Btn_Start.innerText = lang.buttons.start;
+    Btn_Wiki.innerText = lang.buttons.wiki;
+    Btn_ToWarning.innerText = lang.buttons.next;
+    Btn_ToHome.innerText = lang.buttons.previous;
+    Btn_ToMainCheck.innerText = lang.buttons.surestart;
+    Btn_UnsureStart.innerText = lang.buttons.unsurestart;
+    Btn_ToInstructions.innerText = lang.buttons.blackwhite;
+    Btn_ToLightlyColored.innerText = lang.buttons.lightlycolored;
+    Btn_ColoredHome.innerText = lang.buttons.tomainmenu;
+    Btn_Start.innerText = lang.buttons.start;
+    Btn_ToFinal.innerText = lang.buttons.next;
+    Btn_Finish.innerText = lang.buttons.finish;
+
+    document.title = lang.headings.the;
+}
 
 function mainLoop() {
     Img_RedGreen.setAttribute("src", Display_Red ? "green.svg" : "red.svg");
@@ -148,6 +221,7 @@ function setup() {
         Pnl_Home.style.opacity = 1;
         Par_Home.style.opacity = 1;
     }, 1000);
+    loadTranslations();
 }
 
 function emergencyStop() {
