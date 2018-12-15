@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial;
-    background-color: rgb(255, 225, 225);
+    background-color: rgb(255, 245, 245);
 }
 h1 {
     margin: 0;
@@ -31,7 +31,7 @@ a {
     opacity: 0;
     transition-duration: 1s;
     visibility: hidden;
-    background-color: rgb(255, 225, 225);
+    background-color: rgb(255, 245, 245);
     overflow-x: hidden;
     overflow-y: auto;
 }
