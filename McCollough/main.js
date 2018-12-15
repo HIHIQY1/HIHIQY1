@@ -162,10 +162,9 @@ Btn_Finish.addEventListener("click", () => {
 
 function loadTranslations() {
     let availableLanguages = navigator.languages.filter(l => availableTranslations.includes(l.split("-")[0]));
-    console.log(availableLanguages);
 
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "Lang/" + availableLanguages[0] + ".json");
+    xhr.open("GET", "Lang/" + availableLanguages[0].split("-")[0] + ".json");
     xhr.responseType = "json";
     xhr.onload = e => {
         applyTranslation(xhr.response);
