@@ -43,6 +43,8 @@ let Par_WentWell = document.getElementById("par-wentwell");
 let Par_Finish = document.getElementById("par-finish");
 let Btn_UnsureStart = document.getElementById("btn-unsurestart");
 let Btn_ColoredHome = document.getElementById("btn-coloredhome");
+let Btn_Share = document.getElementById("btn-share");
+let Msg_Copied = document.getElementById("copied");
 let availableTranslations = ["en", "nl"];
 let translations = [];
 
@@ -160,6 +162,25 @@ Btn_Finish.addEventListener("click", () => {
     }, 1500);
 });
 
+Btn_Share.addEventListener("click", () => {
+    try {
+        let CopyThing = document.createElement("input");
+        CopyThing.value = "https://HIHIQY1.github.io/HIHIQY1/McCollough/";
+        document.body.appendChild(CopyThing);
+        CopyThing.focus();
+        CopyThing.select();
+        document.execCommand("copy");
+        document.body.removeChild(CopyThing);
+
+        Msg_Copied.style.transform = "scale(1)";
+        setTimeout(() => {
+            Msg_Copied.style.transform = "";
+        }, 3000);
+    } catch {
+        // Too bad lmao
+    }
+});
+
 function loadTranslations() {
     let availableLanguages = navigator.languages.filter(l => availableTranslations.includes(l.split("-")[0]));
 
@@ -192,6 +213,7 @@ function applyTranslation(lang) {
     Par_Same.innerText = lang.paragraphs.same;
     Par_WentWell.innerText = lang.paragraphs.wentwell;
     Par_Finish.innerText = lang.paragraphs.finish;
+    Msg_Copied.innerText = lang.paragraphs.linkcopied;
     // Buttons
     Btn_Start.innerText = lang.buttons.start;
     Btn_Wiki.innerText = lang.buttons.wiki;
@@ -205,6 +227,7 @@ function applyTranslation(lang) {
     Btn_Start.innerText = lang.buttons.start;
     Btn_ToFinal.innerText = lang.buttons.next;
     Btn_Finish.innerText = lang.buttons.finish;
+    Btn_Share.innerText = lang.buttons.share;
 
     document.title = lang.headings.the;
 }

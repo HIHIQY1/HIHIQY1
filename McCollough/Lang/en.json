@@ -11,7 +11,8 @@
         "blackwhite": "As black and white lines",
         "lightlycolored": "As black and lightly colored lines",
         "tomainmenu": "Go to the main menu",
-        "finish": "Finish"
+        "finish": "Finish",
+        "share": "Share this page"
     },
     "headings": {
         "the": "The McCollough Effect",
@@ -32,6 +33,7 @@
         "instructions": "To see the tinting effect, stare at the center of the following two repeating images.\nThe images will be shown for 10 seconds each, repeating until the selected time is over.\nThe longer your selected time is, the longer the effect will last.\nThe effect will work best if being viewed at with both full brightness and fullscreen.\nBlinking is permitted.\n\nSelected time (in minutes):",
         "same": "Now, please look at this image that is exactly the same as the one from the start. (It is unaltered)",
         "wentwell": "If all went well, the vertical lines will seemingly have a reddish tint, and the horizontal lines will seemingly have a greenish tint.",
-        "finish": "You've now experienced the McCollough effect.\nThanks for using this webpage."
+        "finish": "You've now experienced the McCollough effect.\nThanks for using this webpage.",
+        "linkcopied": "Link copied to clipboard!"
     }
 }

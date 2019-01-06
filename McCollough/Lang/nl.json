@@ -11,7 +11,8 @@
         "blackwhite": "Als zwart en witte lijnen",
         "lightlycolored": "Als zwart en lichtgekleurde lijnen",
         "tomainmenu": "Ga naar het hoofdmenu",
-        "finish": "Einde"
+        "finish": "Einde",
+        "share": "Deel deze pagina"
     },
     "headings": {
         "the": "Het McCollough Effect",
@@ -32,6 +33,7 @@
         "instructions": "Om het tinteffect te zien, moet je staren naar het midden van de volgende afbeeldingen.\nDe afbeeldingen zullen elk worden laten zien voor 10 seconden, herhalend totdat de geselecteerde tijd over is.\nHoe langer de geselecteerde tijd is, hoe langer het effect zou kunnen duren.\nHet effect zal het beste werken als het bekeken wordt met beide volledige schermhelderheid en volledig scherm ingeschakeld.\nKnipperen met je ogen is toegestaan.\n\nGeselecteerde tijd (in minuten):",
         "same": "Oké, kijk nu naar deze afbeelding die precies hetzelfde is als aan het begin. (Het is ongewijzigd)",
         "wentwell": "Als alles goed is gegaan, zouden de verticale lijnen een rode tint lijken te hebben, en de horizontale lijnen zouden dan een groene tint lijken te hebben.",
-        "finish": "Je hebt nu het McCollough effect ervaren.\nBedankt voor het gebruiken van deze webpagina."
+        "finish": "Je hebt nu het McCollough effect ervaren.\nBedankt voor het gebruiken van deze webpagina.",
+        "linkcopied": "Link gekopieerd naar klembord!"
     }
 }
