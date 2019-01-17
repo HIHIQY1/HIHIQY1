@@ -249,7 +249,7 @@ document.getElementById("dropzone").addEventListener("drop", e => {
     }
 });
 
-Inp_Input.addEventListener("input", e => { handleInput(e.target.files); });
+Inp_Input.addEventListener("change", e => { handleInput(e.target.files); });
 Chk_AlreadyBlackWhite.addEventListener((isTouchDevice ? "touchend" : "mouseup"), switchSwitch);
 Chk_LimitSize.addEventListener((isTouchDevice ? "touchend" : "mouseup"), switchSwitch);
 
